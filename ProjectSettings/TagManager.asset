@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TurnBlock Right
   - TurnBlock Left
+  - Delete Trigger
   layers:
   - Default
   - TransparentFX

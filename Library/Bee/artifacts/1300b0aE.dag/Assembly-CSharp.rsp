@@ -363,6 +363,7 @@
 "Assets/Scripts/CanvasBtn.cs"
 "Assets/Scripts/CarController.cs"
 "Assets/Scripts/Fading.cs"
+"Assets/Scripts/GameController.cs"
 -langversion:9.0
 /deterministic
 /optimize+

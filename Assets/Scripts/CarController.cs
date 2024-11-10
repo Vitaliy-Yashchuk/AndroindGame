@@ -41,6 +41,10 @@ public class CarController : MonoBehaviour
         {
             _carRb.rotation = Quaternion.Euler(0,_originRotationY - 90f,0);
         }
+        else if (other.transform.CompareTag("Delete Trigger") && leftTurn)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void RotateCar(float speedRotate, int dir=1)
