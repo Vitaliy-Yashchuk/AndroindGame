@@ -47,8 +47,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
+    <Compile Include="Assets\Scripts\Study\MovementFirstCar.cs" />
     <Compile Include="Assets\Scripts\Fading.cs" />
     <Compile Include="Assets\Scripts\CanvasBtn.cs" />
+    <Compile Include="Assets\Scripts\Study\SecondCar.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

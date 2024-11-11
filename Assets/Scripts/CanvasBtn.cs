@@ -17,6 +17,13 @@ public class CanvasBtn : MonoBehaviour
 
   public void PlayGame()
   {
+    if (PlayerPrefs.GetString("First Game") == "No")
+      StartCoroutine(LoadScene("Game"));
+    else
+    {
+      PlayerPrefs.SetString("First Game", "No");
+      StartCoroutine(LoadScene("Study"));
+    }
     StartCoroutine(LoadScene("Game"));
   }
   
