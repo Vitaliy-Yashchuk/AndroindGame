@@ -10,6 +10,8 @@ public class CanvasBtn : MonoBehaviour
 
   void Start()
   {
+    CarController.isLose = false;
+    CarController.countCars = 0;
     _image = GetComponent<Image>();
   }
 
@@ -17,6 +19,7 @@ public class CanvasBtn : MonoBehaviour
   {
     StartCoroutine(LoadScene("Game"));
   }
+  
   public void SetPressedBtn()
   {
     _image.sprite = btnPressed;

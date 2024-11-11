@@ -488,7 +488,8 @@ MonoBehaviour:
   rightTurn: 0
   leftTurn: 0
   moveFromUp: 0
-  speed: 15
+  speed: 12
+  force: 450
   carsLayer:
     serializedVersion: 2
     m_Bits: 128

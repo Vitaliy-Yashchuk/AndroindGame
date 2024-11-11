@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameController : MonoBehaviour
     public float timeToSpawnFrom = 3f;
     public float timeToSpawnTo = 7.5f;
     private int _counter;
+    private Coroutine _bottomCars,_upCars,_leftCars,_rightCars;
+    private bool _isLoseOnce;
+    public GameObject canvasLosePanel;
+    public Text nowScore,topScore,coinsScore;
     private void Start()
     {
         if (isMainScene)
@@ -15,10 +20,32 @@ public class GameController : MonoBehaviour
             timeToSpawnFrom = 4f;
             timeToSpawnTo = 6f;
         }
-        StartCoroutine(BottomCars());
-        StartCoroutine(LeftCars());
-        StartCoroutine(RightCars());
-        StartCoroutine(UpCars());
+        _bottomCars = StartCoroutine(BottomCars());
+        _leftCars = StartCoroutine(LeftCars());
+        _rightCars = StartCoroutine(RightCars());
+        _upCars = StartCoroutine(UpCars());
+    }
+
+    private void Update()
+    {
+        if (CarController.isLose && !_isLoseOnce)
+        {
+            StopCoroutine(_bottomCars);
+            StopCoroutine(_leftCars);
+            StopCoroutine(_rightCars);
+            StopCoroutine(_upCars);
+            nowScore.text = "<color=#F14D4E>Score:</color> "+ CarController.countCars.ToString();
+            nowScore.text = "<color=#F14D4E>Best Score:</color> "+ CarController.countCars.ToString();
+            if(PlayerPrefs.GetInt("Score") < CarController.countCars)
+            {
+                PlayerPrefs.SetInt("Score", CarController.countCars);
+            }
+            topScore.text = "Best score" + PlayerPrefs.GetInt("Score");
+            PlayerPrefs.SetInt("Coins",PlayerPrefs.GetInt("Coins") + CarController.countCars);
+            coinsScore.text = PlayerPrefs.GetInt("Coins").ToString();
+            canvasLosePanel.SetActive(true);
+            _isLoseOnce = true;
+        }
     }
 
     IEnumerator BottomCars()
@@ -62,7 +89,7 @@ public class GameController : MonoBehaviour
     private void SpawnCar(Vector3 pos, float rotationY, bool isMoveFromUp = false)
     {
         GameObject newObj = Instantiate(cars[Random.Range(0,cars.Length)], pos, Quaternion.Euler(0,rotationY,0)) as GameObject;
-        newObj.name = "Car - " +_counter;
+        newObj.name = "Car - " + ++_counter;
         if (isMainScene)
         {
             newObj.GetComponent<CarController>().speed = 13f;
