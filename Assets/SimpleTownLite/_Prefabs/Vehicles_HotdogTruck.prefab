@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hotdog_rr_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 3300002}
   - component: {fileID: 2300002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hotdog_rl_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 400004}
   - component: {fileID: 3300004}
   - component: {fileID: 2300004}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hotdog_fr_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 400006}
   - component: {fileID: 3300006}
   - component: {fileID: 2300006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hotdog_fl_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,9 +346,10 @@ GameObject:
   - component: {fileID: 3679428176257443307}
   - component: {fileID: 6111006702426459293}
   - component: {fileID: 3047028963262090285}
-  m_Layer: 0
+  - component: {fileID: 4445163287463700482}
+  m_Layer: 7
   m_Name: Vehicles_HotdogTruck
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,10 +480,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f778ca12b42de474589f94e77852a652, type: 3}
+  m_Script: {fileID: 11500000, guid: a5088f8df06fe4d9c9666530d90e9b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   rightTurn: 0
   leftTurn: 0
   moveFromUp: 0
+  speed: 15
+  carsLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  turnLeftSignal: {fileID: 0}
+  turnRightSignal: {fileID: 0}
+--- !u!65 &4445163287463700482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100008}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 3.4368935, y: 1.6502328, z: 1.4370689}
+  m_Center: {x: 0, y: 1.3898723, z: 3.6834636}

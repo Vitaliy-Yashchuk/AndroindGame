@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public GameObject[] cars;
     public float timeToSpawnFrom = 3f;
     public float timeToSpawnTo = 7.5f;
+    private int _counter;
     private void Start()
     {
         if (isMainScene)
@@ -61,6 +62,7 @@ public class GameController : MonoBehaviour
     private void SpawnCar(Vector3 pos, float rotationY, bool isMoveFromUp = false)
     {
         GameObject newObj = Instantiate(cars[Random.Range(0,cars.Length)], pos, Quaternion.Euler(0,rotationY,0)) as GameObject;
+        newObj.name = "Car - " +_counter;
         if (isMainScene)
         {
             newObj.GetComponent<CarController>().speed = 13f;

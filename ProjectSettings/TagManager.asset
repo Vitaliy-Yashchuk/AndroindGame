@@ -7,6 +7,8 @@ TagManager:
   - TurnBlock Right
   - TurnBlock Left
   - Delete Trigger
+  - TriggerPass
+  - Car
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Water
   - UI
   - PostProcessing
-  - 
+  - Cars
   - 
   - 
   - 
