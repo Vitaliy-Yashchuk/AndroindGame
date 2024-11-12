@@ -25,6 +25,7 @@ public class CanvasBtn : MonoBehaviour
       PlayerPrefs.SetString("First Game", "No");
       StartCoroutine(LoadScene("Study"));
     }
+    CarController.BtnPressed = false;
     StartCoroutine(LoadScene("Game"));
   }
   

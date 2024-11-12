@@ -19,6 +19,7 @@ public class CarController : MonoBehaviour {
     public static int countCars=0;
     private Image _image;
     public static bool  BtnPressed;
+    private float fastSp;
     private void Start() {
         _mainCam = Camera.main;
         _originRotationY = transform.eulerAngles.y;
@@ -38,15 +39,16 @@ public class CarController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        
         if (BtnPressed)
         {
-            speed = 5f;
-            _carRb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+            fastSp = speed - 5f;
+            _carRb.MovePosition(transform.position - transform.forward * fastSp * Time.fixedDeltaTime);
         }
         else
         {
-            speed = 12f;
-            _carRb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+            fastSp = speed + 5f;
+            _carRb.MovePosition(transform.position - transform.forward * fastSp * Time.fixedDeltaTime);
         }
     }
 
