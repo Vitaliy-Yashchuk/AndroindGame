@@ -364,6 +364,7 @@
 "Assets/Scripts/CarController.cs"
 "Assets/Scripts/Fading.cs"
 "Assets/Scripts/GameController.cs"
+"Assets/Scripts/SlowTime.cs"
 "Assets/Scripts/Study/MovementFirstCar.cs"
 "Assets/Scripts/Study/SecondCar.cs"
 -langversion:9.0

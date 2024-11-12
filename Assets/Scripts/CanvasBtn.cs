@@ -7,6 +7,7 @@ public class CanvasBtn : MonoBehaviour
 {
   public Sprite btn, btnPressed;
   private Image _image;
+  private Coroutine changeBackCoroutine;
 
   void Start()
   {
@@ -43,5 +44,28 @@ public class CanvasBtn : MonoBehaviour
     float fadeTime = Camera.main.GetComponent<Fading>().Fade(1f);
     yield return new WaitForSeconds(fadeTime);
     SceneManager.LoadScene(name);
+  }
+  public void OnPointerDown()
+  {
+
+    _image.sprite = btnPressed;
+    CarController.BtnPressed = true;
+
+    if (changeBackCoroutine != null)
+    {
+      StopCoroutine(changeBackCoroutine);
+    }
+    
+    changeBackCoroutine = StartCoroutine(ChangeBackAfterDelay(5.0f));
+    
+    
+  }
+  private IEnumerator ChangeBackAfterDelay(float delay)
+  {
+    yield return new WaitForSeconds(delay);
+    
+    _image.sprite = btn;
+    CarController.BtnPressed = false;
+    changeBackCoroutine = null;
   }
 }

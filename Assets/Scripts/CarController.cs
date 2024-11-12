@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CarController : MonoBehaviour {
 
-     public bool rightTurn, leftTurn, moveFromUp;
+    public bool rightTurn, leftTurn, moveFromUp;
     public float speed = 12f, force = 50f;
     private Rigidbody _carRb;
     private float _originRotationY, _rotateMultRight = 6f, _rotateMultLeft = 4.5f;
@@ -14,9 +15,10 @@ public class CarController : MonoBehaviour {
     private bool _isMovingFast, _carCrashed;
     [NonSerialized] public bool carPassed;
     [NonSerialized] public static bool isLose;
-    public GameObject turnLeftSignal, turnRightSignal;
+    public GameObject turnLeftSignal, turnRightSignal, explosion, exhaust;
     public static int countCars=0;
-
+    private Image _image;
+    public static bool  BtnPressed;
     private void Start() {
         _mainCam = Camera.main;
         _originRotationY = transform.eulerAngles.y;
@@ -36,7 +38,16 @@ public class CarController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        _carRb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+        if (BtnPressed)
+        {
+            speed = 5f;
+            _carRb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            speed = 12f;
+            _carRb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+        }
     }
 
     private void Update() {
@@ -60,7 +71,8 @@ public class CarController : MonoBehaviour {
         if (Input.GetTouch(0).phase == TouchPhase.Began && !isMovingFast && gameObject.name == carName) {
 #endif
         
-                
+                GameObject vfx =  Instantiate(exhaust, new Vector3(transform.position.x, transform.position.y+1.5f, transform.position.z), Quaternion.Euler(90,0,0)) as GameObject;
+                Destroy(vfx, 2f);
                 speed *= 2f;
                 _isMovingFast = true;
             }
@@ -75,6 +87,9 @@ public class CarController : MonoBehaviour {
             isLose = true;
             speed = 0f;
             other.gameObject.GetComponent<CarController>().speed = 0f;
+            
+            GameObject vfx = Instantiate(explosion, transform.position, Quaternion.identity)as GameObject;
+            Destroy(vfx, 5f);
             if (_isMovingFast)
             {
                 force *= 1.5f;    
