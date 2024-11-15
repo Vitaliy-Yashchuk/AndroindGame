@@ -37,7 +37,7 @@ public class CanvasBtn : MonoBehaviour
       StartCoroutine(LoadScene("Study"));
       
     }
-    CarController.BtnPressed = false;
+
     StartCoroutine(LoadScene("Game"));
   }
   
@@ -62,7 +62,7 @@ public class CanvasBtn : MonoBehaviour
   {
 
     _image.sprite = btnPressed;
-    CarController.BtnPressed = true;
+   
     audio.Play();
     if (changeBackCoroutine != null)
     {
@@ -78,7 +78,7 @@ public class CanvasBtn : MonoBehaviour
     yield return new WaitForSeconds(delay);
     
     _image.sprite = btn;
-    CarController.BtnPressed = false;
+
     changeBackCoroutine = null;
   }
 }

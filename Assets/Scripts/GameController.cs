@@ -13,9 +13,26 @@ public class GameController : MonoBehaviour
     private bool _isLoseOnce;
     public GameObject canvasLosePanel;
     public Text nowScore,topScore,coinsScore;
+    public GameObject[] maps;
     
     private void Start()
     {
+        if (PlayerPrefs.GetInt("NowMap") == 2)
+        {
+            Destroy(maps[0]);
+            maps[1].SetActive(true);
+            Destroy(maps[2]);
+        }else if (PlayerPrefs.GetInt("NowMap") == 3)
+        {
+            Destroy(maps[0]);
+            Destroy(maps[1]);
+            maps[2].SetActive(true);
+        }else
+        {
+            maps[0].SetActive(true);
+            Destroy(maps[1]);
+            Destroy(maps[2]);
+        }
         if (isMainScene)
         {
             timeToSpawnFrom = 4f;

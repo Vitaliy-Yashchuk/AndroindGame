@@ -46,7 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Shop\BuyMapCoins.cs" />
+    <Compile Include="Assets\Scripts\Shop\ChooseMap.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
+    <Compile Include="Assets\Scripts\Shop\CheckMaps.cs" />
     <Compile Include="Assets\Scripts\Shop\CountCoins.cs" />
     <Compile Include="Assets\Scripts\Study\MovementFirstCar.cs" />
     <Compile Include="Assets\Scripts\Fading.cs" />
