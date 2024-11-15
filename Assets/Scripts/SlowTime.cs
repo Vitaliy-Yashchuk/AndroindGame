@@ -1,39 +1,48 @@
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SlowTime : MonoBehaviour
-{
-    public Sprite btn, btnPressed;
+public class SlowTime : MonoBehaviour {
+
+    private Text countSlows;
+    public Sprite noSlowTime;
     private Image _image;
-    void Start()
-    {
-        StartCoroutine(ExecuteForFiveSeconds());
-    }
-
-    IEnumerator ExecuteForFiveSeconds()
-    {
-        float duration = 5.0f; 
-        float elapsedTime = 0.0f; 
-
-        while (elapsedTime < duration)
-        {
-            
-            Debug.Log("Функція виконується: " + elapsedTime);
-
-            elapsedTime += Time.deltaTime; 
-            yield return null;
+    private AudioSource _audioSource;
+    
+    private void Start() {
+        _audioSource = GetComponent<AudioSource>();
+        
+        if (!PlayerPrefs.HasKey("SlowTime")) {
+            PlayerPrefs.SetInt("SlowTime", 3);
         }
 
-        SetDefaultBtn();
-        Debug.Log("Функція завершила виконання");
+        countSlows = transform.GetChild(0).GetComponent<Text>();
+        countSlows.text = PlayerPrefs.GetInt("SlowTime").ToString();
+        
+        _image = GetComponent<Image>();
+        if (PlayerPrefs.GetInt("SlowTime") == 0)
+            _image.sprite = noSlowTime;
     }
-    public void SetPressedBtn()
-    {
-        _image.sprite = btnPressed;
+
+    public void SetSlowTime() {
+        if (PlayerPrefs.GetInt("SlowTime") == 0 || Time.timeScale == 0.5f)
+            return;
+        Time.timeScale = 0.5f;
+        
+        PlayerPrefs.SetInt("SlowTime", PlayerPrefs.GetInt("SlowTime") - 1);
+
+        Invoke("RemoveSlowTime", 5f);
+        
+        countSlows.text = PlayerPrefs.GetInt("SlowTime").ToString();
+        
+        if (PlayerPrefs.GetInt("SlowTime") == 0)
+            _image.sprite = noSlowTime;
+        
+        if (PlayerPrefs.GetString("music") != "No")
+            _audioSource.Play();
     }
-    public void SetDefaultBtn()
-    {
-        _image.sprite = btn;
+
+    void RemoveSlowTime() {
+        Time.timeScale = 1;
     }
+    
 }

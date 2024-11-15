@@ -39,17 +39,9 @@ public class CarController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        
-        if (BtnPressed)
-        {
-            fastSp = speed - 5f;
-            _carRb.MovePosition(transform.position - transform.forward * fastSp * Time.fixedDeltaTime);
-        }
-        else
-        {
-            fastSp = speed + 5f;
-            _carRb.MovePosition(transform.position - transform.forward * fastSp * Time.fixedDeltaTime);
-        }
+
+            _carRb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+            _carRb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
     }
 
     private void Update() {

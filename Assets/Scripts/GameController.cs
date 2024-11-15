@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private bool _isLoseOnce;
     public GameObject canvasLosePanel;
     public Text nowScore,topScore,coinsScore;
+    
     private void Start()
     {
         if (isMainScene)
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        
         if (CarController.isLose && !_isLoseOnce)
         {
             StopCoroutine(_bottomCars);

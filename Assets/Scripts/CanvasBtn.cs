@@ -8,6 +8,7 @@ public class CanvasBtn : MonoBehaviour
   public Sprite btn, btnPressed;
   private Image _image;
   private Coroutine changeBackCoroutine;
+  public AudioSource audio;
 
   void Start()
   {
@@ -20,10 +21,12 @@ public class CanvasBtn : MonoBehaviour
   {
     if (PlayerPrefs.GetString("First Game") == "No")
       StartCoroutine(LoadScene("Game"));
+      
     else
     {
       PlayerPrefs.SetString("First Game", "No");
       StartCoroutine(LoadScene("Study"));
+      
     }
     CarController.BtnPressed = false;
     StartCoroutine(LoadScene("Game"));
@@ -51,7 +54,7 @@ public class CanvasBtn : MonoBehaviour
 
     _image.sprite = btnPressed;
     CarController.BtnPressed = true;
-
+    audio.Play();
     if (changeBackCoroutine != null)
     {
       StopCoroutine(changeBackCoroutine);
