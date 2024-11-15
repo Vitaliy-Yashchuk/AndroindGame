@@ -17,6 +17,15 @@ public class CanvasBtn : MonoBehaviour
     _image = GetComponent<Image>();
   }
 
+  public void ShopScene()
+  {
+    StartCoroutine(LoadScene("Shop"));
+  }
+  public void ExitShopScene()
+  {
+    StartCoroutine(LoadScene("Main"));
+  }
+
   public void PlayGame()
   {
     if (PlayerPrefs.GetString("First Game") == "No")

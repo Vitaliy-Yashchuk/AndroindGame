@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
+    <Compile Include="Assets\Scripts\Shop\CountCoins.cs" />
     <Compile Include="Assets\Scripts\Study\MovementFirstCar.cs" />
     <Compile Include="Assets\Scripts\Fading.cs" />
     <Compile Include="Assets\Scripts\SlowTime.cs" />

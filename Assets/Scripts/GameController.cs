@@ -36,13 +36,13 @@ public class GameController : MonoBehaviour
             StopCoroutine(_leftCars);
             StopCoroutine(_rightCars);
             StopCoroutine(_upCars);
-            nowScore.text = "<color=#F14D4E>Score:</color> "+ CarController.countCars.ToString();
-            nowScore.text = "<color=#F14D4E>Best Score:</color> "+ CarController.countCars.ToString();
+            nowScore.text = "<color=#F14D4E>Score: </color> "+ CarController.countCars.ToString();
+            //nowScore.text = "<color=#F14D4E>Best Score: </color> "+ CarController.countCars.ToString();
             if(PlayerPrefs.GetInt("Score") < CarController.countCars)
             {
                 PlayerPrefs.SetInt("Score", CarController.countCars);
             }
-            topScore.text = "Best score" + PlayerPrefs.GetInt("Score");
+            topScore.text = "Best score: " + PlayerPrefs.GetInt("Score");
             PlayerPrefs.SetInt("Coins",PlayerPrefs.GetInt("Coins") + CarController.countCars);
             coinsScore.text = PlayerPrefs.GetInt("Coins").ToString();
             canvasLosePanel.SetActive(true);
