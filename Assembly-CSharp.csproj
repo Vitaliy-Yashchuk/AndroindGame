@@ -48,6 +48,7 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Shop\BuyMapCoins.cs" />
     <Compile Include="Assets\Scripts\Shop\ChooseMap.cs" />
+    <Compile Include="Assets\Scripts\AdsManager.cs" />
     <Compile Include="Assets\Scripts\DeleteHorn.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\Shop\CheckMaps.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="Assets\Scripts\CanvasBtn.cs" />
     <Compile Include="Assets\Scripts\Study\SecondCar.cs" />
     <None Include="Assets\Prefabs\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-9.4.0_manifest.txt" />
+    <None Include="Assets\GoogleMobileAds\link.xml" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -303,6 +306,24 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>C:\Users\Vitalino\Desktop\CrossDrive\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>C:\Users\Vitalino\Desktop\CrossDrive\Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds">
+      <HintPath>C:\Users\Vitalino\Desktop\CrossDrive\Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Unity">
+      <HintPath>C:\Users\Vitalino\Desktop\CrossDrive\Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Core">
+      <HintPath>C:\Users\Vitalino\Desktop\CrossDrive\Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Ump.Unity">
+      <HintPath>C:\Users\Vitalino\Desktop\CrossDrive\Assets\GoogleMobileAds\GoogleMobileAds.Ump.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Ump">
+      <HintPath>C:\Users\Vitalino\Desktop\CrossDrive\Assets\GoogleMobileAds\GoogleMobileAds.Ump.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -762,6 +783,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{eb723dcf-aa56-0bb4-ba45-e482be355497}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

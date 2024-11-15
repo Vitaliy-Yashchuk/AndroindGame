@@ -3063,6 +3063,8 @@ MonoBehaviour:
   megapolis_btn: {fileID: 980239604}
   coinsText: {fileID: 1729097526}
   coinsCount: {fileID: 1729097523}
+  success: {fileID: 8300000, guid: 6813d325db1cc284fbb6b911397d5ec1, type: 3}
+  fail: {fileID: 8300000, guid: c3fd3f4c56bd2554b8aa962695ca2177, type: 3}
 --- !u!4 &1545566823
 Transform:
   m_ObjectHideFlags: 0
@@ -3108,6 +3110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c8cc0cf899dba4783e37ae895c98dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnClick: {fileID: 8300000, guid: 535e8f54911029949a384752bdf22511, type: 3}
 --- !u!82 &1545566826
 AudioSource:
   m_ObjectHideFlags: 0

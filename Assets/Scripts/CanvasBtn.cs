@@ -52,20 +52,15 @@ public class CanvasBtn : MonoBehaviour
     PlayBtnSound();
   }
 
-  public void PlayGame()
-  {
-    if (PlayerPrefs.GetString("First Game") == "No")
+  public void PlayGame() {
+    if(PlayerPrefs.GetString("First Game") == "No")
       StartCoroutine(LoadScene("Game"));
-      
-    else
-    {
-      PlayerPrefs.SetString("First Game", "No");
+    else 
       StartCoroutine(LoadScene("Study"));
-      
-    }
+  }
 
+  public void RestartGame() {
     StartCoroutine(LoadScene("Game"));
-    PlayBtnSound();
   }
   
   public void SetPressedBtn()

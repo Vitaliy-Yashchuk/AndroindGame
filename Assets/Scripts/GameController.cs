@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public GameObject[] maps;
     public GameObject horn;
     public AudioSource turnSignal;
+    public static int countLoses;
     
     private void Start()
     {
@@ -52,6 +53,7 @@ public class GameController : MonoBehaviour
         
         if (CarController.isLose && !_isLoseOnce)
         {
+            countLoses++;
             StopCoroutine(_bottomCars);
             StopCoroutine(_leftCars);
             StopCoroutine(_rightCars);
