@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     public GameObject canvasLosePanel;
     public Text nowScore,topScore,coinsScore;
     public GameObject[] maps;
+    public GameObject horn;
+    public AudioSource turnSignal;
     
     private void Start()
     {
@@ -42,6 +44,7 @@ public class GameController : MonoBehaviour
         _leftCars = StartCoroutine(LeftCars());
         _rightCars = StartCoroutine(RightCars());
         _upCars = StartCoroutine(UpCars());
+        StartCoroutine(CreateHorn());
     }
 
     private void Update()
@@ -105,6 +108,21 @@ public class GameController : MonoBehaviour
         }
     }
 
+    IEnumerator CreateHorn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(5f,9f));
+            if (PlayerPrefs.GetString("music")!="No")
+                Instantiate(horn,Vector3.zero,Quaternion.identity);
+        }
+    }
+
+    void StopSound()
+    {
+        turnSignal.Stop();
+    }
+
     private void SpawnCar(Vector3 pos, float rotationY, bool isMoveFromUp = false)
     {
         GameObject newObj = Instantiate(cars[Random.Range(0,cars.Length)], pos, Quaternion.Euler(0,rotationY,0)) as GameObject;
@@ -119,10 +137,20 @@ public class GameController : MonoBehaviour
             case 1:
             case 2:
                 newObj.GetComponent<CarController>().rightTurn = true;
+                if (PlayerPrefs.GetString("music") != "No" && !turnSignal.isPlaying)
+                {
+                    turnSignal.Play();
+                    Invoke("StopSound",2f);
+                }
                 break;
             case 3:
             case 4:
                 newObj.GetComponent<CarController>().leftTurn = true;
+                if (PlayerPrefs.GetString("music") != "No" && !turnSignal.isPlaying)
+                {
+                    turnSignal.Play();
+                    Invoke("StopSound",2f);
+                }
                 if (isMoveFromUp)
                 {
                     newObj.GetComponent<CarController>().moveFromUp = true;

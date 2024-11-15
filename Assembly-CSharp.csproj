@@ -48,6 +48,7 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Shop\BuyMapCoins.cs" />
     <Compile Include="Assets\Scripts\Shop\ChooseMap.cs" />
+    <Compile Include="Assets\Scripts\DeleteHorn.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\Shop\CheckMaps.cs" />
     <Compile Include="Assets\Scripts\Shop\CountCoins.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="Assets\Scripts\SlowTime.cs" />
     <Compile Include="Assets\Scripts\CanvasBtn.cs" />
     <Compile Include="Assets\Scripts\Study\SecondCar.cs" />
-    <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
+    <None Include="Assets\Prefabs\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

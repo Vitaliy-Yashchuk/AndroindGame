@@ -5,25 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class CanvasBtn : MonoBehaviour
 {
-  public Sprite btn, btnPressed;
+  public Sprite btn, btnPressed, musicOn, musicOff;
   private Image _image;
   private Coroutine changeBackCoroutine;
-  public AudioSource audio;
+ 
 
   void Start()
   {
     CarController.isLose = false;
     CarController.countCars = 0;
     _image = GetComponent<Image>();
+    if (gameObject.name == "MusicBtn")
+    {
+      if (PlayerPrefs.GetString("music") == "No")
+      {
+        transform.GetChild(0).GetComponent<Image>().sprite = musicOff;  
+      }
+    }
+  }
+
+  public void MusicButton()
+  {
+    if (PlayerPrefs.GetString("music") == "No")
+    {
+     PlayerPrefs.SetString("music", "Yes");
+     transform.GetChild(0).GetComponent<Image>().sprite = musicOn;
+    }
+    else
+    {
+      PlayerPrefs.SetString("music", "No");
+      transform.GetChild(0).GetComponent<Image>().sprite = musicOff;
+    }
+
+    PlayBtnSound();
+    
   }
 
   public void ShopScene()
   {
     StartCoroutine(LoadScene("Shop"));
+    PlayBtnSound();
   }
   public void ExitShopScene()
   {
     StartCoroutine(LoadScene("Main"));
+    PlayBtnSound();
   }
 
   public void PlayGame()
@@ -39,6 +65,7 @@ public class CanvasBtn : MonoBehaviour
     }
 
     StartCoroutine(LoadScene("Game"));
+    PlayBtnSound();
   }
   
   public void SetPressedBtn()
@@ -62,8 +89,7 @@ public class CanvasBtn : MonoBehaviour
   {
 
     _image.sprite = btnPressed;
-   
-    audio.Play();
+    
     if (changeBackCoroutine != null)
     {
       StopCoroutine(changeBackCoroutine);
@@ -80,5 +106,13 @@ public class CanvasBtn : MonoBehaviour
     _image.sprite = btn;
 
     changeBackCoroutine = null;
+  }
+
+  private void PlayBtnSound()
+  {
+    if (PlayerPrefs.GetString("music")!="No")
+    {
+      GetComponent<AudioSource>().Play();
+    }
   }
 }

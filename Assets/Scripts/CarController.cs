@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody))]
 public class CarController : MonoBehaviour {
 
-     public bool rightTurn, leftTurn, moveFromUp;
+    public bool rightTurn, leftTurn, moveFromUp;
     public float speed = 15f, force = 50f;
     private Rigidbody carRb;
     private float originRotationY, rotateMultRight = 6f, rotateMultLeft = 4.5f;
@@ -16,8 +16,9 @@ public class CarController : MonoBehaviour {
     [NonSerialized] public bool carPassed;
     [NonSerialized] public static bool isLose;
     public GameObject turnLeftSignal, turnRightSignal, explosion, exhaust;
-
     [NonSerialized] public static int countCars;
+    public AudioClip crash;
+    public AudioClip[] accelerates;
 
     private void Start() {
         mainCam = Camera.main;
@@ -66,6 +67,11 @@ public class CarController : MonoBehaviour {
                 Destroy(vfx, 2f);
                 speed *= 2f;
                 isMovingFast = true;
+                if (PlayerPrefs.GetString("music") != "No")
+                {
+                    GetComponent<AudioSource>().clip = accelerates[UnityEngine.Random.Range(0, accelerates.Length)];
+                    GetComponent<AudioSource>().Play();
+                }
             }
         }
     }
@@ -84,6 +90,11 @@ public class CarController : MonoBehaviour {
                 force *= 1.2f;
             
             carRb.AddRelativeForce(Vector3.back * force);
+            if (PlayerPrefs.GetString("music") != "No")
+            {
+                GetComponent<AudioSource>().clip = crash;
+                GetComponent<AudioSource>().Play();
+            }
         }
     }
 

@@ -6,13 +6,20 @@ public class BuyMapCoins : MonoBehaviour
     public GameObject coins1000, coins5000, money0_99, money1_99, city_btn, megapolis_btn;
     public Animation coinsText;
     public Text coinsCount;
+    public AudioClip success, fail;
     
     public void BuyNewMap(int needCoins) {
         int coins = PlayerPrefs.GetInt("Coins");
         if (coins < needCoins)
+        {
+            if (PlayerPrefs.GetString("music")!="No")
+            {
+                GetComponent<AudioSource>().clip = fail;
+                GetComponent<AudioSource>().Play();
+            }
             coinsText.Play();
+        }
         else {
-            // Buy map
             switch (needCoins) {
                 case 1000:
                     PlayerPrefs.SetString("City", "Open");
@@ -35,6 +42,12 @@ public class BuyMapCoins : MonoBehaviour
             int nowCoins = coins - needCoins;
             coinsCount.text = nowCoins.ToString();
             PlayerPrefs.SetInt("Coins", nowCoins);
+            
+            if (PlayerPrefs.GetString("music")!="No")
+            {
+                GetComponent<AudioSource>().clip = success;
+                GetComponent<AudioSource>().Play();
+            }
         }
     }
 }
