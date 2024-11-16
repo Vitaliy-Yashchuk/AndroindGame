@@ -1,3 +1,4 @@
+using System;
 using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using UnityEngine;
@@ -23,6 +24,15 @@ public class AdsManager : MonoBehaviour
         }
         LoadInterstitialAd();
     }
+
+    public void Awake()
+    {
+        if (PlayerPrefs.GetString("NoAds") == "Yes")
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void LoadInterstitialAd()
     {
         // Clean up the old ad before loading a new one.
